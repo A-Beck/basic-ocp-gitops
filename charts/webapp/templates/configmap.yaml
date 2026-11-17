@@ -16,10 +16,11 @@ data:
           html, body { min-height: 100%; }
           body {
             margin: 0;
+            min-height: 100vh;
             display: grid;
             place-items: center;
-            background-color: {{ .Values.page.color | quote }};
-            color: {{ .Values.page.color | quote }};
+            background-color: {{ .Values.page.color }};
+            color: {{ .Values.page.color }};
             font-family: sans-serif;
           }
           h1 {
