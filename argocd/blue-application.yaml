@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: basic-ocp-blue
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/A-Beck/basic-ocp-gitops.git
+    targetRevision: HEAD
+    path: charts/webapp
+    helm:
+      valueFiles:
+        - values-blue.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: basic-ocp-blue
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

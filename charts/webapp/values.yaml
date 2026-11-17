@@ -1,0 +1,13 @@
+replicaCount: 1
+image:
+  repository: registry.access.redhat.com/hi/httpd
+  tag: latest
+  pullPolicy: IfNotPresent
+page:
+  message: Welcome to blue
+  color: blue
+service:
+  port: 8080
+route:
+  enabled: true
+resources: {}

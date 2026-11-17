@@ -1,0 +1,16 @@
+{{- if .Values.route.enabled }}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "webapp.fullname" . }}
+  labels:
+    {{- include "webapp.labels" . | nindent 4 }}
+spec:
+  to:
+    kind: Service
+    name: {{ include "webapp.fullname" . }}
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+{{- end }}
